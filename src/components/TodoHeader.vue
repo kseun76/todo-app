@@ -1,10 +1,6 @@
 
 <template>
-  <div>header</div>
+  <header>
+    <h1>Todo App</h1>
+  </header>
 </template>
-<script>
-
-</script>
-<style>
-
-</style>
