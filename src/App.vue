@@ -1,8 +1,8 @@
 <template>
   <div>
     <todo-header></todo-header>
-    <todo-input></todo-input>
-    <todo-list></todo-list>
+    <todo-input v-on:add="addTodoItem"></todo-input>
+    <todo-list v-bind:todolist="todoItems"></todo-list>
     <todo-footer></todo-footer>
   </div>
 </template>
@@ -19,6 +19,36 @@ export default {
     'todo-input': TodoInput,
     'todo-list': TodoList,
     'todo-footer': TodoFooter,
+  },
+
+  data() {
+    return {
+      todoItems: [],
+    };
+  },
+  // 컴포넌트가 생성되자마자 실행되는 로직
+  created: function() {
+    this.fetchTodoItems();
+  },
+  methods: {
+    addTodoItem: function(value) {
+      // 배열에 추가
+      this.todoItems.push(value);
+      // 저장소에 저장
+      localStorage.setItem(value, value);
+    },
+    removeTodoItem: function(todo, index) {
+      // 배열에서 삭제
+      this.todoItems.splice(index, 1);
+      // 저장소에서 삭제
+      localStorage.removeItem(todo);
+    },
+    fetchTodoItems: function() {
+      for (var i = 0; i < localStorage.length; i++) {
+        var item = localStorage.key(i);
+        this.todoItems.push(item);
+      }
+    },
   },
 }
 </script>
