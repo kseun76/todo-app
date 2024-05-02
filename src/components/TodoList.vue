@@ -1,16 +1,13 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="(todoItem, index) in todolist"
-          v-bind:key="index">
-        <span>{{ todoItem }}</span>
-        <button
-            v-on:click="removeTodoItem(todoItem, index)">remove
-        </button>
-      </li>
-    </ul>
-
-  </div>
+  <ul>
+    <li v-for="(todoItem, index) in todolist"
+        v-bind:key="index">
+      <span>{{ todoItem }}</span>
+      <button
+          v-on:click="removeTodoItem(todoItem, index)">remove
+      </button>
+    </li>
+  </ul>
 </template>
 <script>
 export default {
@@ -23,7 +20,7 @@ export default {
   methods: {
     removeTodoItem: function (todo, index) {
       console.log('deleted', todo, index);
-      //this.$emit('remove', todo, index);
+      this.$emit('remove-todo', todo, index);
     }
   }
 }

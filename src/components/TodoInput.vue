@@ -15,8 +15,8 @@ export default {
   methods: {
     addTodo: function () {
       var value = this.inputText;
-      //this.$emit('add', value);
-      localStorage.setItem(value, value);
+      // localStorage.setItem(value, value);
+      this.$emit('add-todo', value);
       this.clearInput();
     },
     clearInput: function () {
