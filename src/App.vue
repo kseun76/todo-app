@@ -3,7 +3,7 @@
     <todo-header></todo-header>
     <todo-input v-on:add-todo="addTodoItem"></todo-input>
     <todo-list v-bind:todolist="todoItems" v-on:remove-todo="removeTodoItem"></todo-list>
-    <todo-footer></todo-footer>
+    <todo-footer v-on:removeAll="clearAll"></todo-footer>
   </div>
 </template>
 <script>
@@ -49,43 +49,27 @@ export default {
         this.todoItems.push(item);
       }
     },
+    clearAll() {
+      localStorage.clear();
+      this.todoItems = [];
+    },
   },
 }
 </script>
 
 <style>
-html,
 body {
-  margin: 0;
-  padding: 0;
+  text-align: center;
+  background-color: #F6F6F8;
 }
-
+input {
+  border-style: groove;
+  width: 200px;
+}
 button {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font-size: 100%;
-  vertical-align: baseline;
-  font-family: inherit;
-  font-weight: inherit;
-  color: inherit;
-  -webkit-appearance: none;
-  appearance: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  border-style: groove;
 }
-
-body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.4em;
-  background: #f5f5f5;
-  color: #4d4d4d;
-  min-width: 230px;
-  max-width: 550px;
-  margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 300;
+.shadow {
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03)
 }
 </style>
