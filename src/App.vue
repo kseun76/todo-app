@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h4>Store textMessage 값 : {{$store.state.textMessage}}</h4>
+
     <todo-header></todo-header>
     <todo-input v-on:add-todo="addTodoItem"></todo-input>
     <todo-list v-bind:todolist="todoItems" v-on:remove-todo="removeTodoItem"></todo-list>
