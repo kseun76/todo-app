@@ -24,6 +24,7 @@ export default createStore({
             return state.todoItems;
         }
     },
+
     mutations: {
         addOneItem(state, todoItem) {
             const obj = {completed: false, item: todoItem};
