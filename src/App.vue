@@ -1,11 +1,9 @@
 <template>
   <div>
-    <h4>Store textMessage 값 : {{$store.state.textMessage}}</h4>
-
     <todo-header></todo-header>
-    <todo-input v-on:add-todo="addTodoItem"></todo-input>
-    <todo-list v-bind:todolist="todoItems" v-on:remove-todo="removeTodoItem"></todo-list>
-    <todo-footer v-on:removeAll="clearAll"></todo-footer>
+    <todo-input ></todo-input>
+    <todo-list ></todo-list>
+    <todo-footer ></todo-footer>
   </div>
 </template>
 <script>
@@ -27,34 +25,6 @@ export default {
     return {
       todoItems: [],
     };
-  },
-  // 컴포넌트가 생성되자마자 실행되는 로직
-  created: function() {
-    this.fetchTodoItems();
-  },
-  methods: {
-    addTodoItem: function(value) {
-      // 배열에 추가
-      this.todoItems.push(value);
-      // 저장소에 저장
-      localStorage.setItem(value, value);
-    },
-    removeTodoItem: function(todo, index) {
-      // 배열에서 삭제
-      this.todoItems.splice(index, 1);
-      // 저장소에서 삭제
-      localStorage.removeItem(todo);
-    },
-    fetchTodoItems: function() {
-      for (var i = 0; i < localStorage.length; i++) {
-        var item = localStorage.key(i);
-        this.todoItems.push(item);
-      }
-    },
-    clearAll() {
-      localStorage.clear();
-      this.todoItems = [];
-    },
   },
 }
 </script>

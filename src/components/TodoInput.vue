@@ -34,12 +34,10 @@ export default {
     };
   },
   methods: {
-    addTodo: function () {
-
+    addTodo() {
       if (this.inputText !== '') {
-        var value = this.inputText;
-        // localStorage.setItem(value, value);
-        this.$emit('add-todo', value);
+        const item = this.inputText;
+        this.$store.commit('addOneItem', item);
         this.clearInput();
       } else {
         this.showModal = !this.showModal;
